@@ -7,7 +7,7 @@ main = do
     args <- getArgs
     withFile (head args) ReadMode (\handle -> do
         content <- hGetContents handle
-        let fizzBuzzResults = map getFB $ map getFBArgs $ lines content
+        let fizzBuzzResults =  map (getFB . getFBArgs) (lines content)
         mapM_ putStrLn fizzBuzzResults
         )
 
@@ -27,6 +27,6 @@ getFBLine divisorX divisorY (n:ns) = fizzBuzz divisorX divisorY n ++ " " ++ getF
 getFB :: [Int] -> String
 getFB fbArgs = getFBLine argX argY [1..argN]
     where
-    argX = fbArgs !! 0
+    argX = head fbArgs
     argY = fbArgs !! 1
     argN = fbArgs !! 2
