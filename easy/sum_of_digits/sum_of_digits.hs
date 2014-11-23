@@ -10,7 +10,7 @@ main = do
     withFile (head args) ReadMode (\handle -> do
         content <- hGetContents handle
         let digits = map sumDigits (lines content)
-        mapM_ putStrLn $ map show digits
+        mapM_ print digits
         )
 
 
