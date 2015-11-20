@@ -1,6 +1,6 @@
 #!/bin/bash
 OLD_IFS="$IFS"
-while read -r line;
+while read line || [ -n "$line" ];
 do
   IFS="|"
   ROWS=$line
